@@ -38,7 +38,6 @@ export const App = () => (
 
     <div className="section">
       <div className="container">
-        <h1 className="title">Home page</h1>
         <Routes>
           <Route path="/" element={<h1 className="title">Home page</h1>} />
           <Route path="tabs">
