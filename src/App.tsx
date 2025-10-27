@@ -23,12 +23,18 @@ export const App = () => (
             to="/"
             end
             className={({ isActive }) => {
-              return classNames({ 'navbar-item': isActive });
+              return classNames('navbar-item', { 'is-active': isActive });
             }}
           >
             Home
           </NavLink>
-          <NavLink to="/" end className="navbar-item">
+          <NavLink
+            to="/tabs"
+            end
+            className={({ isActive }) => {
+              return classNames('navbar-item', { 'is-active': isActive });
+            }}
+          >
             Tabs
           </NavLink>
         </div>
