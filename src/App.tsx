@@ -1,6 +1,8 @@
 import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import './App.scss';
+import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 
 // const tabs = [
 //   { id: 'tab-1', title: 'Tab 1', content: 'Some text 1' },
@@ -17,12 +19,18 @@ export const App = () => (
     >
       <div className="container">
         <div className="navbar-brand">
-          <a href="/" className="navbar-item is-active">
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) => {
+              return classNames({ 'navbar-item': isActive });
+            }}
+          >
             Home
-          </a>
-          <a href="/tabs" className="navbar-item">
+          </NavLink>
+          <NavLink to="/" end className="navbar-item">
             Tabs
-          </a>
+          </NavLink>
         </div>
       </div>
     </nav>
@@ -35,14 +43,26 @@ export const App = () => (
 
         <div className="tabs is-boxed">
           <ul>
-            <li data-cy="Tab" className="is-active">
-              <a href="#/">Tab 1</a>
+            <li data-cy="Tab">
+              <NavLink
+                to="#/"
+                end
+                className={({ isActive }) => {
+                  return classNames({ 'is-active': isActive });
+                }}
+              >
+                Tab 1
+              </NavLink>
             </li>
             <li data-cy="Tab">
-              <a href="#/">Tab 2</a>
+              <NavLink to="#/" end>
+                Tab 2
+              </NavLink>
             </li>
             <li data-cy="Tab">
-              <a href="#/">Tab 3</a>
+              <NavLink to="#/" end>
+                Tab 3
+              </NavLink>
             </li>
           </ul>
         </div>
