@@ -39,6 +39,7 @@ export const App = () => (
     <div className="section">
       <div className="container">
         <Routes>
+          <Route index element={<Navigate to="/" replace />} />
           <Route path="/" element={<h1 className="title">Home page</h1>} />
           <Route path="tabs">
             <Route index element={<Navigate to="1" replace />} />
