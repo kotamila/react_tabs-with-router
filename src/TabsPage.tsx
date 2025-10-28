@@ -11,13 +11,8 @@ const tabs = [
 export const TabsPage = () => {
   const { tabId } = useParams();
 
-  const defaultTab = tabs[0];
   const activeTab = tabs.find(tab => tab.id === tabId);
-  const currentTab = tabId ? activeTab : defaultTab;
-
-  const contentToDisplay = currentTab
-    ? currentTab.content
-    : 'Вкладка не знайдена';
+  const currentTab = activeTab;
 
   return (
     <>
@@ -30,15 +25,13 @@ export const TabsPage = () => {
               data-cy="Tab"
               className={classNames({ 'is-active': tab.id === currentTab?.id })}
             >
-              <NavLink to={tab.id} end>
-                {tab.title}
-              </NavLink>
+              <NavLink to={`/tabs/${tab.id}`}>{tab.title}</NavLink>
             </li>
           ))}
         </ul>
       </div>
       <div className="block" data-cy="TabContent">
-        {currentTab ? <p>{contentToDisplay}</p> : `Please select a tab`}
+        {currentTab ? <p>{currentTab.content}</p> : `Please select a tab`}
       </div>
     </>
   );
