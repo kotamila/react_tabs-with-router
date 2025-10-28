@@ -14,6 +14,10 @@ export const TabsPage = () => {
   const activeTab = tabs.find(tab => tab.id === tabId);
   const currentTab = activeTab;
 
+  const contentToDisplay = currentTab
+    ? currentTab.content
+    : 'Please select a tab';
+
   return (
     <>
       <h1 className="title">Tabs page</h1>;
@@ -31,7 +35,7 @@ export const TabsPage = () => {
         </ul>
       </div>
       <div className="block" data-cy="TabContent">
-        {currentTab ? <p>{currentTab.content}</p> : `Please select a tab`}
+        {currentTab ? <p>{contentToDisplay}</p> : <p>{contentToDisplay}</p>}
       </div>
     </>
   );
